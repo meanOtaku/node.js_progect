@@ -1,5 +1,6 @@
 const http = require('http');
 const fs = require('fs');
+var port = process.env.PORT || 8080;
 const server = http.createServer((req, res) => {
     console.log('Server made');
 
@@ -28,7 +29,7 @@ const server = http.createServer((req, res) => {
     })
 })
 
-server.listen(8080, 'localhost', () => {
+server.listen(port, () => {
     
     console.log("Server made")
 })
