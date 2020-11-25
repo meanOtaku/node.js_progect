@@ -21,7 +21,11 @@ app.get('/about', (req, res) => {
 });
 
 app.get('/about-us', (req, res) => {
-    res.redirect('/about');
+    res.redirect('about');
+});
+
+app.get('/blogs/create', (req, res) => {
+    res.redirect('create');
 });
 
 app.use((req,res) => {
