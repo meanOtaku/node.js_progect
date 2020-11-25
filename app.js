@@ -6,6 +6,9 @@ var port = process.env.PORT || 8080;
 //express app
 const app = express();
 
+//register view engine
+app.set('view engine', 'ejs' );
+
 // listen for requests
 app.listen(port);
 
