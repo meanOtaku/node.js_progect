@@ -15,7 +15,7 @@ app.listen(port);
 
 //middleware  & static files
 
-app.use(express.static('public'))
+app.use(express.static('public'));
 
 app.use(morgan('dev'));
 
