@@ -1,6 +1,11 @@
 const express = require('express');
 const morgan = require('morgan');
 
+const dbURI = 'mongodb+srv://honeybisht123:honeybisht123@nodepro.a6gzy.mongodb.net/<dbname>?retryWrites=true&w=majority'
+
+
+
+
 //port of server
 var port = process.env.PORT || 8080;
 
