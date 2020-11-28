@@ -1,8 +1,9 @@
 const express = require('express');
 const morgan = require('morgan');
+const mongoose = require('mongoose');
 
-const dbURI = 'mongodb+srv://honeybisht123:honeybisht123@nodepro.a6gzy.mongodb.net/<dbname>?retryWrites=true&w=majority'
-
+const dbURI = 'mongodb+srv://honeybisht123:honeybisht123@nodepro.a6gzy.mongodb.net/node-pro?retryWrites=true&w=majority'
+mongoose.connect(dbURI);
 
 
 
