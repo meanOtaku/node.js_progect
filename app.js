@@ -1,10 +1,13 @@
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const Blog = require('./models/blogs');
+const { response } = require('express');
 
 const dbURI = 'mongodb+srv://honeybisht123:honeybisht123@nodepro.a6gzy.mongodb.net/node-pro?retryWrites=true&w=majority'
-mongoose.connect(dbURI);
-
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true } )
+    .then((results) => app.listen(port))
+    .catch((err) => console.log(err));
 
 
 //port of server
@@ -17,20 +20,43 @@ const app = express();
 app.set('view engine', 'ejs' );
 
 // listen for requests
-app.listen(port);
+
 
 //middleware  & static files
 
 app.use(express.static('public'));
-
+app.use(express.urlencoded({ extended: true }))
 app.use(morgan('dev'));
 
 app.get('/', (req, res) => {
-    res.render('index')
+    res.redirect('/blogs')
 });
 
 app.get('/about', (req, res) => {
     res.render('about');
+});
+
+//blog route
+app.get('/blogs', (req, res) => {
+    Blog.find().sort({ createdAt : -1 })
+    .then((result) => {
+        res.render('index', { title: 'All Blogs', blogs: result });
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+});
+
+app.post('/blogs', (req, res) => {
+    const blog = new blog(req.body);
+
+    blog.save()
+    .then((result) => {
+        res.redirect('/blogs');
+    })
+    .catch((err) => {
+        console.log(err);
+    })
 });
 
 app.get('/blogs/create', (req, res) => {
